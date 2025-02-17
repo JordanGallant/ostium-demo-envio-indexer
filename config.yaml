@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: ostium
+networks:
+- id: 42161
+  start_block: 0
+  contracts:
+  - name: TransparentUpgradeableProxy
+    address:
+    - 0x6D0bA1f9996DBD8885827e1b2e8f6593e7702411
+    handler: src/EventHandlers.ts
+    events:
+    - event: AdminChanged(address previousAdmin, address newAdmin)
+    - event: AutomationCloseOrderInitiated(uint256 indexed orderId, uint256 indexed tradeId, address indexed trader, uint16 pairIndex, uint8 )
+    - event: AutomationOpenOrderInitiated(uint256 indexed orderId, address indexed trader, uint16 indexed pairIndex, uint8 index)
+    - event: BeaconUpgraded(address indexed beacon)
+    - event: DelegateAdded(address indexed delegator, address indexed delegate)
+    - event: DelegateRemoved(address indexed delegator, address indexed delegate)
+    - event: Done(bool done)
+    - event: Initialized(uint64 version)
+    - event: MarketCloseFailed(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex)
+    - event: MarketCloseOrderInitiated(uint256 indexed orderId, uint256 indexed tradeId, address indexed trader, uint16 pairIndex)
+    - event: MarketCloseTimeoutExecuted(uint256 indexed orderId, uint256 indexed tradeId, (uint256,uint192,uint32,(uint256,uint192,uint192,uint192,address,uint32,uint16,uint8,bool)) order)
+    - event: MarketOpenOrderInitiated(uint256 indexed orderId, address indexed trader, uint16 indexed pairIndex)
+    - event: MarketOpenTimeoutExecuted(uint256 indexed orderId, (uint256,uint192,uint32,(uint256,uint192,uint192,uint192,address,uint32,uint16,uint8,bool)) order)
+    - event: MarketOrdersTimeoutUpdated(uint16 value)
+    - event: MaxAllowedCollateralUpdated(uint256 value)
+    - event: OpenLimitCanceled(address indexed trader, uint16 indexed pairIndex, uint8 index)
+    - event: OpenLimitPlaced(address indexed trader, uint16 indexed pairIndex, uint8 index)
+    - event: OpenLimitUpdated(address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newPrice, uint192 newTp, uint192 newSl)
+    - event: Paused(bool paused)
+    - event: SlUpdated(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newSl)
+    - event: TopUpCollateralExecuted(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint256 topUpAmount, uint32 newLeverage)
+    - event: TpUpdated(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newTp)
+    - event: TriggerTimeoutUpdated(uint16 value)
+    - event: Upgraded(address indexed implementation)
+rollback_on_reorg: false

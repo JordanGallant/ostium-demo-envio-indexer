@@ -1,0 +1,183 @@
+type TransparentUpgradeableProxy_AdminChanged {
+  id: ID!
+  previousAdmin: String!
+  newAdmin: String!
+}
+
+type TransparentUpgradeableProxy_AutomationCloseOrderInitiated {
+  id: ID!
+  orderId: BigInt!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+  _4: BigInt!
+}
+
+type TransparentUpgradeableProxy_AutomationOpenOrderInitiated {
+  id: ID!
+  orderId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+}
+
+type TransparentUpgradeableProxy_BeaconUpgraded {
+  id: ID!
+  beacon: String!
+}
+
+type TransparentUpgradeableProxy_DelegateAdded {
+  id: ID!
+  delegator: String!
+  delegate: String!
+}
+
+type TransparentUpgradeableProxy_DelegateRemoved {
+  id: ID!
+  delegator: String!
+  delegate: String!
+}
+
+type TransparentUpgradeableProxy_Done {
+  id: ID!
+  done: Boolean!
+}
+
+type TransparentUpgradeableProxy_Initialized {
+  id: ID!
+  version: BigInt!
+}
+
+type TransparentUpgradeableProxy_MarketCloseFailed {
+  id: ID!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+}
+
+type TransparentUpgradeableProxy_MarketCloseOrderInitiated {
+  id: ID!
+  orderId: BigInt!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+}
+
+type TransparentUpgradeableProxy_MarketCloseTimeoutExecuted {
+  id: ID!
+  orderId: BigInt!
+  tradeId: BigInt!
+  order_0: BigInt!
+  order_1: BigInt!
+  order_2: BigInt!
+  order_3_0: BigInt!
+  order_3_1: BigInt!
+  order_3_2: BigInt!
+  order_3_3: BigInt!
+  order_3_4: String!
+  order_3_5: BigInt!
+  order_3_6: BigInt!
+  order_3_7: BigInt!
+  order_3_8: Boolean!
+}
+
+type TransparentUpgradeableProxy_MarketOpenOrderInitiated {
+  id: ID!
+  orderId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+}
+
+type TransparentUpgradeableProxy_MarketOpenTimeoutExecuted {
+  id: ID!
+  orderId: BigInt!
+  order_0: BigInt!
+  order_1: BigInt!
+  order_2: BigInt!
+  order_3_0: BigInt!
+  order_3_1: BigInt!
+  order_3_2: BigInt!
+  order_3_3: BigInt!
+  order_3_4: String!
+  order_3_5: BigInt!
+  order_3_6: BigInt!
+  order_3_7: BigInt!
+  order_3_8: Boolean!
+}
+
+type TransparentUpgradeableProxy_MarketOrdersTimeoutUpdated {
+  id: ID!
+  value: BigInt!
+}
+
+type TransparentUpgradeableProxy_MaxAllowedCollateralUpdated {
+  id: ID!
+  value: BigInt!
+}
+
+type TransparentUpgradeableProxy_OpenLimitCanceled {
+  id: ID!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+}
+
+type TransparentUpgradeableProxy_OpenLimitPlaced {
+  id: ID!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+}
+
+type TransparentUpgradeableProxy_OpenLimitUpdated {
+  id: ID!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+  newPrice: BigInt!
+  newTp: BigInt!
+  newSl: BigInt!
+}
+
+type TransparentUpgradeableProxy_Paused {
+  id: ID!
+  paused: Boolean!
+}
+
+type TransparentUpgradeableProxy_SlUpdated {
+  id: ID!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+  newSl: BigInt!
+}
+
+type TransparentUpgradeableProxy_TopUpCollateralExecuted {
+  id: ID!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+  topUpAmount: BigInt!
+  newLeverage: BigInt!
+}
+
+type TransparentUpgradeableProxy_TpUpdated {
+  id: ID!
+  tradeId: BigInt!
+  trader: String!
+  pairIndex: BigInt!
+  index: BigInt!
+  newTp: BigInt!
+}
+
+type TransparentUpgradeableProxy_TriggerTimeoutUpdated {
+  id: ID!
+  value: BigInt!
+}
+
+type TransparentUpgradeableProxy_Upgraded {
+  id: ID!
+  implementation: String!
+}
+
