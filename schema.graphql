@@ -1,209 +1,71 @@
-type Trading_AdminChanged {
+type BaseVault_AdminChanged {
   id: ID!
   previousAdmin: String!
   newAdmin: String!
 }
 
-type Trading_AutomationCloseOrderInitiated {
-  id: ID!
-  orderId: BigInt!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-  _4: BigInt!
-}
-
-type Trading_AutomationOpenOrderInitiated {
-  id: ID!
-  orderId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-}
-
-type Trading_BeaconUpgraded {
+type BaseVault_BeaconUpgraded {
   id: ID!
   beacon: String!
 }
 
-type Trading_DelegateAdded {
-  id: ID!
-  delegator: String!
-  delegate: String!
-}
-
-type Trading_DelegateRemoved {
-  id: ID!
-  delegator: String!
-  delegate: String!
-}
-
-type Trading_Done {
-  id: ID!
-  done: Boolean!
-}
-
-type Trading_Initialized {
-  id: ID!
-  version: BigInt!
-}
-
-type Trading_MarketCloseFailed {
-  id: ID!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-}
-
-type Trading_MarketCloseOrderInitiated {
-  id: ID!
-  orderId: BigInt!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-}
-
-type Trading_MarketCloseTimeoutExecuted {
-  id: ID!
-  orderId: BigInt!
-  tradeId: BigInt!
-  order_0: BigInt!
-  order_1: BigInt!
-  order_2: BigInt!
-  order_3_0: BigInt!
-  order_3_1: BigInt!
-  order_3_2: BigInt!
-  order_3_3: BigInt!
-  order_3_4: String!
-  order_3_5: BigInt!
-  order_3_6: BigInt!
-  order_3_7: BigInt!
-  order_3_8: Boolean!
-}
-
-type Trading_MarketOpenOrderInitiated {
-  id: ID!
-  orderId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-}
-
-type Trading_MarketOpenTimeoutExecuted {
-  id: ID!
-  orderId: BigInt!
-  order_0: BigInt!
-  order_1: BigInt!
-  order_2: BigInt!
-  order_3_0: BigInt!
-  order_3_1: BigInt!
-  order_3_2: BigInt!
-  order_3_3: BigInt!
-  order_3_4: String!
-  order_3_5: BigInt!
-  order_3_6: BigInt!
-  order_3_7: BigInt!
-  order_3_8: Boolean!
-}
-
-type Trading_MarketOrdersTimeoutUpdated {
-  id: ID!
-  value: BigInt!
-}
-
-type Trading_MaxAllowedCollateralUpdated {
-  id: ID!
-  value: BigInt!
-}
-
-type Trading_OpenLimitCanceled {
-  id: ID!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-}
-
-type Trading_OpenLimitPlaced {
-  id: ID!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-}
-
-type Trading_OpenLimitUpdated {
-  id: ID!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-  newPrice: BigInt!
-  newTp: BigInt!
-  newSl: BigInt!
-}
-
-type Trading_Paused {
-  id: ID!
-  paused: Boolean!
-}
-
-type Trading_SlUpdated {
-  id: ID!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-  newSl: BigInt!
-}
-
-type Trading_TopUpCollateralExecuted {
-  id: ID!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-  topUpAmount: BigInt!
-  newLeverage: BigInt!
-}
-
-type Trading_TpUpdated {
-  id: ID!
-  tradeId: BigInt!
-  trader: String!
-  pairIndex: BigInt!
-  index: BigInt!
-  newTp: BigInt!
-}
-
-type Trading_TriggerTimeoutUpdated {
-  id: ID!
-  value: BigInt!
-}
-
-type Trading_Upgraded {
+type BaseVault_Upgraded {
   id: ID!
   implementation: String!
 }
 
-type Vault_RewardDistributed {
-  id: ID!
-  sender: String!
-  assets: BigInt!
-  accRewardsPerToken: BigInt!
-}
-
-type Vault_ShareToAssetsPriceUpdated {
-  id: ID!
-  value: BigInt!
-}
-
-
-type Vault_Transfer {
+type BaseVault_Transfer{
   id: ID!
   from: String!
   to: String!
   value: BigInt!
 }
 
-type Vault_AssetsSent {
+type BaseVault_Withdraw{
   id: ID!
   sender: String!
-  receiver: String!
-  assets: BigInt!
+  reciever: String!
+  owner: String!
+  assets:BigInt!
+  shares: BigInt!
+}
+type BaseVault_Deposit{
+  id: ID!
+  sender: String!
+  owner: String!
+  assets:BigInt!
+  shares: BigInt!
+}
+
+type BaseVault_FeeReceiverChanged{
+  id: ID!
+  feeReceiver: String!
+}
+
+type ArbitrumVault_Transfer{
+  id: ID!
+  from: String!
+  to: String!
+  value: BigInt!
+}
+
+type ArbitrumVault_Withdraw{
+  id: ID!
+  sender: String!
+  reciever: String!
+  owner: String!
+  assets:BigInt!
+  shares: BigInt!
+}
+type ArbitrumVault_Deposit{
+  id: ID!
+  sender: String!
+  owner: String!
+  assets:BigInt!
+  shares: BigInt!
+}
+
+type ArbitrumVault_FeeReceiverChanged{
+  id: ID!
+  feeReceiver: String!
 }

@@ -1,47 +1,33 @@
-# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
-name: ostium
+name: bakerFi
 networks:
-- id: 42161
+- id: 8453
   start_block: 0
   contracts:
-  - name: Trading
+  - name: BaseVault
     address:
-    - 0x6D0bA1f9996DBD8885827e1b2e8f6593e7702411
+    - 0x37327c99bBc522e677a97d01021dB20227faF60A
     handler: src/EventHandlers.ts
     events:
     - event: AdminChanged(address previousAdmin, address newAdmin)
-    - event: AutomationCloseOrderInitiated(uint256 indexed orderId, uint256 indexed tradeId, address indexed trader, uint16 pairIndex, uint8 )
-    - event: AutomationOpenOrderInitiated(uint256 indexed orderId, address indexed trader, uint16 indexed pairIndex, uint8 index)
     - event: BeaconUpgraded(address indexed beacon)
-    - event: DelegateAdded(address indexed delegator, address indexed delegate)
-    - event: DelegateRemoved(address indexed delegator, address indexed delegate)
-    - event: Done(bool done)
-    - event: Initialized(uint64 version)
-    - event: MarketCloseFailed(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex)
-    - event: MarketCloseOrderInitiated(uint256 indexed orderId, uint256 indexed tradeId, address indexed trader, uint16 pairIndex)
-    - event: MarketCloseTimeoutExecuted(uint256 indexed orderId, uint256 indexed tradeId, (uint256,uint192,uint32,(uint256,uint192,uint192,uint192,address,uint32,uint16,uint8,bool)) order)
-    - event: MarketOpenOrderInitiated(uint256 indexed orderId, address indexed trader, uint16 indexed pairIndex)
-    - event: MarketOpenTimeoutExecuted(uint256 indexed orderId, (uint256,uint192,uint32,(uint256,uint192,uint192,uint192,address,uint32,uint16,uint8,bool)) order)
-    - event: MarketOrdersTimeoutUpdated(uint16 value)
-    - event: MaxAllowedCollateralUpdated(uint256 value)
-    - event: OpenLimitCanceled(address indexed trader, uint16 indexed pairIndex, uint8 index)
-    - event: OpenLimitPlaced(address indexed trader, uint16 indexed pairIndex, uint8 index)
-    - event: OpenLimitUpdated(address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newPrice, uint192 newTp, uint192 newSl)
-    - event: Paused(bool paused)
-    - event: SlUpdated(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newSl)
-    - event: TopUpCollateralExecuted(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint256 topUpAmount, uint32 newLeverage)
-    - event: TpUpdated(uint256 indexed tradeId, address indexed trader, uint16 indexed pairIndex, uint8 index, uint192 newTp)
-    - event: TriggerTimeoutUpdated(uint16 value)
     - event: Upgraded(address indexed implementation)
-  - name: Vault
+    - event: Deposit (address indexed sender, address indexed owner, uint256 assets, uint256 shares)
+    - event: Transfer (address indexed from, address indexed to, uint256 value)
+    - event: Withdraw ( address indexed sender, address indexed receiver,  address indexed owner, uint256 assets, uint256 shares)
+    - event: FeeReceiverChanged (address feeReceiver)
+- id: 42161
+  start_block: 0
+  contracts:
+  - name: ArbitrumVault
     address:
-    - 0x20D419a8e12C45f88fDA7c5760bb6923Cee27F98
+    - 0x4c6d58749126FEBb1D28E8B8FdE97DC3107996d3
     handler: src/EventHandlers.ts
     events:
-    - event: RewardDistributed (address indexed sender, uint256 assets, uint256 accRewardsPerToken)
-    - event: ShareToAssetsPriceUpdated (uint256 value)
+    - event: AdminChanged(address previousAdmin, address newAdmin)
+    - event: BeaconUpgraded(address indexed beacon)
+    - event: Upgraded(address indexed implementation)
+    - event: Deposit (address indexed sender, address indexed owner, uint256 assets, uint256 shares)
     - event: Transfer (address indexed from, address indexed to, uint256 value)
-    - event: AssetsSent (address indexed sender, address indexed receiver, uint256 assets)
-
-
+    - event: Withdraw ( address indexed sender, address indexed receiver,  address indexed owner, uint256 assets, uint256 shares)
+    - event: FeeReceiverChanged (address feeReceiver)
 raw_events: true
