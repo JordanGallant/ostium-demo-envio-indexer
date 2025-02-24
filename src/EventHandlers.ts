@@ -2,138 +2,147 @@
  * Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features
  */
 import {
-  BaseVault,
-  BaseVault_AdminChanged,
-  BaseVault_BeaconUpgraded,
-  BaseVault_Upgraded,
-  BaseVault_Deposit,
+  BaseFactory,
+  BaseFactory_DestinationVaultRegistered,
+  EthFactory,
+  EthFactory_DestinationVaultRegistered,
+  EthVault,
+  EthVault_Transfer,
+  EthVault_WithdrawLiquidity,
+  EthVault_BaseAssetWithdraw,
+  EthVault_UnderlyingWithdraw,
+  BaseVault_UnderlyingWithdraw,
   BaseVault_Transfer,
-  BaseVault_FeeReceiverChanged,
-  BaseVault_Withdraw,
-  ArbitrumVault,
-  ArbitrumVault_Deposit,
-  ArbitrumVault_Withdraw,
-  ArbitrumVault_Transfer,
-  ArbitrumVault_FeeReceiverChanged,
+  BaseVault_WithdrawLiquidity,
+  BaseVault_BaseAssetWithdraw,
+  BaseVault
+
 } from "generated";
 
-BaseVault.AdminChanged.handler(async ({ event, context }) => {
-  const entity: BaseVault_AdminChanged = {
+BaseFactory.DestinationVaultRegistered.contractRegister(
+  async ({ event, context }) => {
+    console.log("Vault added", event.params.vaultAddress);  
+    context.addBaseVault(event.params.vaultAddress);
+  },
+  { preRegisterDynamicContracts: true }
+);
+
+BaseFactory.DestinationVaultRegistered.handler(async ({ event, context }) => {
+  const entity: BaseFactory_DestinationVaultRegistered = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    previousAdmin: event.params.previousAdmin,
-    newAdmin: event.params.newAdmin,
+    vaultAddress: event.params.vaultAddress,
+    caller: event.params.caller,
   };
 
-  context.BaseVault_AdminChanged.set(entity);
+  context.BaseFactory_DestinationVaultRegistered.set(entity);
 });
 
-BaseVault.BeaconUpgraded.handler(async ({ event, context }) => {
-  const entity: BaseVault_BeaconUpgraded = {
+
+ EthFactory.DestinationVaultRegistered.contractRegister(
+   async ({ event, context }) => {
+     console.log("Vault added", event.params.vaultAddress);  
+      context.addEthVault(event.params.vaultAddress);
+    },
+   { preRegisterDynamicContracts: true }
+ );
+
+EthFactory.DestinationVaultRegistered.handler(async ({ event, context }) => {
+  const entity: EthFactory_DestinationVaultRegistered = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    beacon: event.params.beacon,
+    vaultAddress: event.params.vaultAddress,
+    caller: event.params.caller,
   };
 
-  context.BaseVault_BeaconUpgraded.set(entity);
+  context.EthFactory_DestinationVaultRegistered.set(entity);
 });
 
-BaseVault.Upgraded.handler(async ({ event, context }) => {
-  const entity: BaseVault_Upgraded = {
+EthVault.Transfer.handler(async ({ event, context }) => {
+  const entity: EthVault_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    implementation: event.params.implementation,
+    from: event.params.from,
+    to: event.params.to,
+    value: event.params.value
   };
 
-  context.BaseVault_Upgraded.set(entity);
+  context.EthVault_Transfer.set(entity);
 });
 
-BaseVault.Withdraw.handler(async ({ event, context }) => {
-  const entity: BaseVault_Withdraw = {
+EthVault.WithdrawLiquidity.handler(async ({ event, context }) => {
+  const entity: EthVault_WithdrawLiquidity = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
-    reciever: event.params.receiver,
+    lpToken: event.params.lpToken,
+    staking: event.params.staking,
+    amount: event.params.amount
+  };
+
+  context.EthVault_WithdrawLiquidity.set(entity);
+});
+
+EthVault.BaseAssetWithdraw.handler(async ({ event, context }) => {
+  const entity: EthVault_BaseAssetWithdraw = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    amount: event.params.amount,
     owner: event.params.owner,
-    assets: event.params.assets,
-    shares: event.params.shares,
+    to: event.params.to
   };
 
-  context.BaseVault_Withdraw.set(entity);
+  context.EthVault_BaseAssetWithdraw.set(entity);
 });
 
-BaseVault.Deposit.handler(async ({ event, context }) => {
-  const entity: BaseVault_Deposit = {
+EthVault.UnderlyingWithdraw.handler(async ({ event, context }) => {
+  const entity: EthVault_UnderlyingWithdraw = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
+    amount: event.params.amount,
     owner: event.params.owner,
-    assets: event.params.assets,
-    shares: event.params.shares,
+    to: event.params.to
   };
 
-  context.BaseVault_Deposit.set(entity);
+  context.EthVault_UnderlyingWithdraw.set(entity);
 });
+
 
 BaseVault.Transfer.handler(async ({ event, context }) => {
   const entity: BaseVault_Transfer = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     from: event.params.from,
     to: event.params.to,
-    value: event.params.value,
+    value: event.params.value
   };
 
   context.BaseVault_Transfer.set(entity);
 });
 
-BaseVault.FeeReceiverChanged.handler(async ({ event, context }) => {
-  const entity: BaseVault_FeeReceiverChanged = {
+BaseVault.WithdrawLiquidity.handler(async ({ event, context }) => {
+  const entity: BaseVault_WithdrawLiquidity = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    feeReceiver: event.params.feeReceiver,
+    lpToken: event.params.lpToken,
+    staking: event.params.staking,
+    amount: event.params.amount
   };
 
-  context.BaseVault_FeeReceiverChanged.set(entity);
+  context.BaseVault_WithdrawLiquidity.set(entity);
 });
 
-
-// Arbitrum Event Handlers
-
-ArbitrumVault.Withdraw.handler(async ({ event, context }) => {
-  const entity: ArbitrumVault_Withdraw = {
+BaseVault.BaseAssetWithdraw.handler(async ({ event, context }) => {
+  const entity: BaseVault_BaseAssetWithdraw = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
-    reciever: event.params.receiver,
+    amount: event.params.amount,
     owner: event.params.owner,
-    assets: event.params.assets,
-    shares: event.params.shares,
+    to: event.params.to
   };
 
-  context.ArbitrumVault_Withdraw.set(entity);
+  context.BaseVault_BaseAssetWithdraw.set(entity);
 });
 
-ArbitrumVault.Deposit.handler(async ({ event, context }) => {
-  const entity: ArbitrumVault_Deposit = {
+BaseVault.UnderlyingWithdraw.handler(async ({ event, context }) => {
+  const entity: BaseVault_UnderlyingWithdraw = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
+    amount: event.params.amount,
     owner: event.params.owner,
-    assets: event.params.assets,
-    shares: event.params.shares,
+    to: event.params.to
   };
 
-  context.ArbitrumVault_Deposit.set(entity);
+  context.BaseVault_UnderlyingWithdraw.set(entity);
 });
 
-ArbitrumVault.Transfer.handler(async ({ event, context }) => {
-  const entity: ArbitrumVault_Transfer = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    from: event.params.from,
-    to: event.params.to,
-    value: event.params.value,
-  };
-
-  context.ArbitrumVault_Transfer.set(entity);
-});
-
-ArbitrumVault.FeeReceiverChanged.handler(async ({ event, context }) => {
-  const entity: ArbitrumVault_FeeReceiverChanged = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    feeReceiver: event.params.feeReceiver,
-  };
-
-  context.ArbitrumVault_FeeReceiverChanged.set(entity);
-});
+//
