@@ -2,45 +2,50 @@
  * Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features
  */
 import {
-  TransparentUpgradeableProxy,
-  TransparentUpgradeableProxy_AdminChanged,
-  TransparentUpgradeableProxy_AutomationCloseOrderInitiated,
-  TransparentUpgradeableProxy_AutomationOpenOrderInitiated,
-  TransparentUpgradeableProxy_BeaconUpgraded,
-  TransparentUpgradeableProxy_DelegateAdded,
-  TransparentUpgradeableProxy_DelegateRemoved,
-  TransparentUpgradeableProxy_Done,
-  TransparentUpgradeableProxy_Initialized,
-  TransparentUpgradeableProxy_MarketCloseFailed,
-  TransparentUpgradeableProxy_MarketCloseOrderInitiated,
-  TransparentUpgradeableProxy_MarketCloseTimeoutExecuted,
-  TransparentUpgradeableProxy_MarketOpenOrderInitiated,
-  TransparentUpgradeableProxy_MarketOpenTimeoutExecuted,
-  TransparentUpgradeableProxy_MarketOrdersTimeoutUpdated,
-  TransparentUpgradeableProxy_MaxAllowedCollateralUpdated,
-  TransparentUpgradeableProxy_OpenLimitCanceled,
-  TransparentUpgradeableProxy_OpenLimitPlaced,
-  TransparentUpgradeableProxy_OpenLimitUpdated,
-  TransparentUpgradeableProxy_Paused,
-  TransparentUpgradeableProxy_SlUpdated,
-  TransparentUpgradeableProxy_TopUpCollateralExecuted,
-  TransparentUpgradeableProxy_TpUpdated,
-  TransparentUpgradeableProxy_TriggerTimeoutUpdated,
-  TransparentUpgradeableProxy_Upgraded,
+  Trading,
+  Trading_AdminChanged,
+  Trading_AutomationCloseOrderInitiated,
+  Trading_AutomationOpenOrderInitiated,
+  Trading_BeaconUpgraded,
+  Trading_DelegateAdded,
+  Trading_DelegateRemoved,
+  Trading_Done,
+  Trading_Initialized,
+  Trading_MarketCloseFailed,
+  Trading_MarketCloseOrderInitiated,
+  Trading_MarketCloseTimeoutExecuted,
+  Trading_MarketOpenOrderInitiated,
+  Trading_MarketOpenTimeoutExecuted,
+  Trading_MarketOrdersTimeoutUpdated,
+  Trading_MaxAllowedCollateralUpdated,
+  Trading_OpenLimitCanceled,
+  Trading_OpenLimitPlaced,
+  Trading_OpenLimitUpdated,
+  Trading_Paused,
+  Trading_SlUpdated,
+  Trading_TopUpCollateralExecuted,
+  Trading_TpUpdated,
+  Trading_TriggerTimeoutUpdated,
+  Trading_Upgraded,
+  Vault,
+  Vault_AssetsSent,
+  Vault_Transfer,
+  Vault_ShareToAssetsPriceUpdated,
+  Vault_RewardDistributed
 } from "generated";
 
-TransparentUpgradeableProxy.AdminChanged.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_AdminChanged = {
+Trading.AdminChanged.handler(async ({ event, context }) => {
+  const entity: Trading_AdminChanged = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     previousAdmin: event.params.previousAdmin,
     newAdmin: event.params.newAdmin,
   };
 
-  context.TransparentUpgradeableProxy_AdminChanged.set(entity);
+  context.Trading_AdminChanged.set(entity);
 });
 
-TransparentUpgradeableProxy.AutomationCloseOrderInitiated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_AutomationCloseOrderInitiated = {
+Trading.AutomationCloseOrderInitiated.handler(async ({ event, context }) => {
+  const entity: Trading_AutomationCloseOrderInitiated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     tradeId: event.params.tradeId,
@@ -49,11 +54,11 @@ TransparentUpgradeableProxy.AutomationCloseOrderInitiated.handler(async ({ event
     _4: event.params._4,
   };
 
-  context.TransparentUpgradeableProxy_AutomationCloseOrderInitiated.set(entity);
+  context.Trading_AutomationCloseOrderInitiated.set(entity);
 });
 
-TransparentUpgradeableProxy.AutomationOpenOrderInitiated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_AutomationOpenOrderInitiated = {
+Trading.AutomationOpenOrderInitiated.handler(async ({ event, context }) => {
+  const entity: Trading_AutomationOpenOrderInitiated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     trader: event.params.trader,
@@ -61,69 +66,69 @@ TransparentUpgradeableProxy.AutomationOpenOrderInitiated.handler(async ({ event,
     index: event.params.index,
   };
 
-  context.TransparentUpgradeableProxy_AutomationOpenOrderInitiated.set(entity);
+  context.Trading_AutomationOpenOrderInitiated.set(entity);
 });
 
-TransparentUpgradeableProxy.BeaconUpgraded.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_BeaconUpgraded = {
+Trading.BeaconUpgraded.handler(async ({ event, context }) => {
+  const entity: Trading_BeaconUpgraded = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     beacon: event.params.beacon,
   };
 
-  context.TransparentUpgradeableProxy_BeaconUpgraded.set(entity);
+  context.Trading_BeaconUpgraded.set(entity);
 });
 
-TransparentUpgradeableProxy.DelegateAdded.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_DelegateAdded = {
+Trading.DelegateAdded.handler(async ({ event, context }) => {
+  const entity: Trading_DelegateAdded = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     delegator: event.params.delegator,
     delegate: event.params.delegate,
   };
 
-  context.TransparentUpgradeableProxy_DelegateAdded.set(entity);
+  context.Trading_DelegateAdded.set(entity);
 });
 
-TransparentUpgradeableProxy.DelegateRemoved.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_DelegateRemoved = {
+Trading.DelegateRemoved.handler(async ({ event, context }) => {
+  const entity: Trading_DelegateRemoved = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     delegator: event.params.delegator,
     delegate: event.params.delegate,
   };
 
-  context.TransparentUpgradeableProxy_DelegateRemoved.set(entity);
+  context.Trading_DelegateRemoved.set(entity);
 });
 
-TransparentUpgradeableProxy.Done.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_Done = {
+Trading.Done.handler(async ({ event, context }) => {
+  const entity: Trading_Done = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     done: event.params.done,
   };
 
-  context.TransparentUpgradeableProxy_Done.set(entity);
+  context.Trading_Done.set(entity);
 });
 
-TransparentUpgradeableProxy.Initialized.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_Initialized = {
+Trading.Initialized.handler(async ({ event, context }) => {
+  const entity: Trading_Initialized = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     version: event.params.version,
   };
 
-  context.TransparentUpgradeableProxy_Initialized.set(entity);
+  context.Trading_Initialized.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketCloseFailed.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketCloseFailed = {
+Trading.MarketCloseFailed.handler(async ({ event, context }) => {
+  const entity: Trading_MarketCloseFailed = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     tradeId: event.params.tradeId,
     trader: event.params.trader,
     pairIndex: event.params.pairIndex,
   };
 
-  context.TransparentUpgradeableProxy_MarketCloseFailed.set(entity);
+  context.Trading_MarketCloseFailed.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketCloseOrderInitiated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketCloseOrderInitiated = {
+Trading.MarketCloseOrderInitiated.handler(async ({ event, context }) => {
+  const entity: Trading_MarketCloseOrderInitiated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     tradeId: event.params.tradeId,
@@ -131,11 +136,11 @@ TransparentUpgradeableProxy.MarketCloseOrderInitiated.handler(async ({ event, co
     pairIndex: event.params.pairIndex,
   };
 
-  context.TransparentUpgradeableProxy_MarketCloseOrderInitiated.set(entity);
+  context.Trading_MarketCloseOrderInitiated.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketCloseTimeoutExecuted.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketCloseTimeoutExecuted = {
+Trading.MarketCloseTimeoutExecuted.handler(async ({ event, context }) => {
+  const entity: Trading_MarketCloseTimeoutExecuted = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     tradeId: event.params.tradeId,
@@ -186,22 +191,22 @@ TransparentUpgradeableProxy.MarketCloseTimeoutExecuted.handler(async ({ event, c
     ,
   };
 
-  context.TransparentUpgradeableProxy_MarketCloseTimeoutExecuted.set(entity);
+  context.Trading_MarketCloseTimeoutExecuted.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketOpenOrderInitiated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketOpenOrderInitiated = {
+Trading.MarketOpenOrderInitiated.handler(async ({ event, context }) => {
+  const entity: Trading_MarketOpenOrderInitiated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     trader: event.params.trader,
     pairIndex: event.params.pairIndex,
   };
 
-  context.TransparentUpgradeableProxy_MarketOpenOrderInitiated.set(entity);
+  context.Trading_MarketOpenOrderInitiated.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketOpenTimeoutExecuted.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketOpenTimeoutExecuted = {
+Trading.MarketOpenTimeoutExecuted.handler(async ({ event, context }) => {
+  const entity: Trading_MarketOpenTimeoutExecuted = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     orderId: event.params.orderId,
     order_0: event.params.order
@@ -251,51 +256,51 @@ TransparentUpgradeableProxy.MarketOpenTimeoutExecuted.handler(async ({ event, co
     ,
   };
 
-  context.TransparentUpgradeableProxy_MarketOpenTimeoutExecuted.set(entity);
+  context.Trading_MarketOpenTimeoutExecuted.set(entity);
 });
 
-TransparentUpgradeableProxy.MarketOrdersTimeoutUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MarketOrdersTimeoutUpdated = {
+Trading.MarketOrdersTimeoutUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_MarketOrdersTimeoutUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     value: event.params.value,
   };
 
-  context.TransparentUpgradeableProxy_MarketOrdersTimeoutUpdated.set(entity);
+  context.Trading_MarketOrdersTimeoutUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.MaxAllowedCollateralUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_MaxAllowedCollateralUpdated = {
+Trading.MaxAllowedCollateralUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_MaxAllowedCollateralUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     value: event.params.value,
   };
 
-  context.TransparentUpgradeableProxy_MaxAllowedCollateralUpdated.set(entity);
+  context.Trading_MaxAllowedCollateralUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.OpenLimitCanceled.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_OpenLimitCanceled = {
+Trading.OpenLimitCanceled.handler(async ({ event, context }) => {
+  const entity: Trading_OpenLimitCanceled = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     trader: event.params.trader,
     pairIndex: event.params.pairIndex,
     index: event.params.index,
   };
 
-  context.TransparentUpgradeableProxy_OpenLimitCanceled.set(entity);
+  context.Trading_OpenLimitCanceled.set(entity);
 });
 
-TransparentUpgradeableProxy.OpenLimitPlaced.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_OpenLimitPlaced = {
+Trading.OpenLimitPlaced.handler(async ({ event, context }) => {
+  const entity: Trading_OpenLimitPlaced = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     trader: event.params.trader,
     pairIndex: event.params.pairIndex,
     index: event.params.index,
   };
 
-  context.TransparentUpgradeableProxy_OpenLimitPlaced.set(entity);
+  context.Trading_OpenLimitPlaced.set(entity);
 });
 
-TransparentUpgradeableProxy.OpenLimitUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_OpenLimitUpdated = {
+Trading.OpenLimitUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_OpenLimitUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     trader: event.params.trader,
     pairIndex: event.params.pairIndex,
@@ -305,20 +310,20 @@ TransparentUpgradeableProxy.OpenLimitUpdated.handler(async ({ event, context }) 
     newSl: event.params.newSl,
   };
 
-  context.TransparentUpgradeableProxy_OpenLimitUpdated.set(entity);
+  context.Trading_OpenLimitUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.Paused.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_Paused = {
+Trading.Paused.handler(async ({ event, context }) => {
+  const entity: Trading_Paused = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     paused: event.params.paused,
   };
 
-  context.TransparentUpgradeableProxy_Paused.set(entity);
+  context.Trading_Paused.set(entity);
 });
 
-TransparentUpgradeableProxy.SlUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_SlUpdated = {
+Trading.SlUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_SlUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     tradeId: event.params.tradeId,
     trader: event.params.trader,
@@ -327,11 +332,11 @@ TransparentUpgradeableProxy.SlUpdated.handler(async ({ event, context }) => {
     newSl: event.params.newSl,
   };
 
-  context.TransparentUpgradeableProxy_SlUpdated.set(entity);
+  context.Trading_SlUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.TopUpCollateralExecuted.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_TopUpCollateralExecuted = {
+Trading.TopUpCollateralExecuted.handler(async ({ event, context }) => {
+  const entity: Trading_TopUpCollateralExecuted = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     tradeId: event.params.tradeId,
     trader: event.params.trader,
@@ -340,11 +345,11 @@ TransparentUpgradeableProxy.TopUpCollateralExecuted.handler(async ({ event, cont
     newLeverage: event.params.newLeverage,
   };
 
-  context.TransparentUpgradeableProxy_TopUpCollateralExecuted.set(entity);
+  context.Trading_TopUpCollateralExecuted.set(entity);
 });
 
-TransparentUpgradeableProxy.TpUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_TpUpdated = {
+Trading.TpUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_TpUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     tradeId: event.params.tradeId,
     trader: event.params.trader,
@@ -353,23 +358,60 @@ TransparentUpgradeableProxy.TpUpdated.handler(async ({ event, context }) => {
     newTp: event.params.newTp,
   };
 
-  context.TransparentUpgradeableProxy_TpUpdated.set(entity);
+  context.Trading_TpUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.TriggerTimeoutUpdated.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_TriggerTimeoutUpdated = {
+Trading.TriggerTimeoutUpdated.handler(async ({ event, context }) => {
+  const entity: Trading_TriggerTimeoutUpdated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     value: event.params.value,
   };
 
-  context.TransparentUpgradeableProxy_TriggerTimeoutUpdated.set(entity);
+  context.Trading_TriggerTimeoutUpdated.set(entity);
 });
 
-TransparentUpgradeableProxy.Upgraded.handler(async ({ event, context }) => {
-  const entity: TransparentUpgradeableProxy_Upgraded = {
+Trading.Upgraded.handler(async ({ event, context }) => {
+  const entity: Trading_Upgraded = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     implementation: event.params.implementation,
   };
 
-  context.TransparentUpgradeableProxy_Upgraded.set(entity);
+  context.Trading_Upgraded.set(entity);
+});
+// Vault Contract
+
+Vault.Transfer.handler(async ({ event, context }) => {
+  const entity: Vault_Transfer = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    from: event.params.from,
+    to: event.params.to,
+    value:event.params.value,
+
+  };
+
+  context.Vault_Transfer.set(entity);
+});
+
+Vault.AssetsSent.handler(async ({ event, context }) => {
+  const entity: Vault_AssetsSent = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    sender: event.params.sender,
+    receiver: event.params.receiver,
+    assets: event.params.assets,
+
+  };
+
+  context.Vault_AssetsSent.set(entity);
+});
+
+Vault.RewardDistributed.handler(async ({ event, context }) => {
+  const entity: Vault_RewardDistributed = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    sender: event.params.sender,
+    assets: event.params.assets,
+    accRewardsPerToken: event.params.accRewardsPerToken,
+
+  };
+
+  context.Vault_RewardDistributed.set(entity);
 });

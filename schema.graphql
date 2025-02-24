@@ -1,10 +1,10 @@
-type TransparentUpgradeableProxy_AdminChanged {
+type Trading_AdminChanged {
   id: ID!
   previousAdmin: String!
   newAdmin: String!
 }
 
-type TransparentUpgradeableProxy_AutomationCloseOrderInitiated {
+type Trading_AutomationCloseOrderInitiated {
   id: ID!
   orderId: BigInt!
   tradeId: BigInt!
@@ -13,7 +13,7 @@ type TransparentUpgradeableProxy_AutomationCloseOrderInitiated {
   _4: BigInt!
 }
 
-type TransparentUpgradeableProxy_AutomationOpenOrderInitiated {
+type Trading_AutomationOpenOrderInitiated {
   id: ID!
   orderId: BigInt!
   trader: String!
@@ -21,41 +21,41 @@ type TransparentUpgradeableProxy_AutomationOpenOrderInitiated {
   index: BigInt!
 }
 
-type TransparentUpgradeableProxy_BeaconUpgraded {
+type Trading_BeaconUpgraded {
   id: ID!
   beacon: String!
 }
 
-type TransparentUpgradeableProxy_DelegateAdded {
+type Trading_DelegateAdded {
   id: ID!
   delegator: String!
   delegate: String!
 }
 
-type TransparentUpgradeableProxy_DelegateRemoved {
+type Trading_DelegateRemoved {
   id: ID!
   delegator: String!
   delegate: String!
 }
 
-type TransparentUpgradeableProxy_Done {
+type Trading_Done {
   id: ID!
   done: Boolean!
 }
 
-type TransparentUpgradeableProxy_Initialized {
+type Trading_Initialized {
   id: ID!
   version: BigInt!
 }
 
-type TransparentUpgradeableProxy_MarketCloseFailed {
+type Trading_MarketCloseFailed {
   id: ID!
   tradeId: BigInt!
   trader: String!
   pairIndex: BigInt!
 }
 
-type TransparentUpgradeableProxy_MarketCloseOrderInitiated {
+type Trading_MarketCloseOrderInitiated {
   id: ID!
   orderId: BigInt!
   tradeId: BigInt!
@@ -63,7 +63,7 @@ type TransparentUpgradeableProxy_MarketCloseOrderInitiated {
   pairIndex: BigInt!
 }
 
-type TransparentUpgradeableProxy_MarketCloseTimeoutExecuted {
+type Trading_MarketCloseTimeoutExecuted {
   id: ID!
   orderId: BigInt!
   tradeId: BigInt!
@@ -81,14 +81,14 @@ type TransparentUpgradeableProxy_MarketCloseTimeoutExecuted {
   order_3_8: Boolean!
 }
 
-type TransparentUpgradeableProxy_MarketOpenOrderInitiated {
+type Trading_MarketOpenOrderInitiated {
   id: ID!
   orderId: BigInt!
   trader: String!
   pairIndex: BigInt!
 }
 
-type TransparentUpgradeableProxy_MarketOpenTimeoutExecuted {
+type Trading_MarketOpenTimeoutExecuted {
   id: ID!
   orderId: BigInt!
   order_0: BigInt!
@@ -105,31 +105,31 @@ type TransparentUpgradeableProxy_MarketOpenTimeoutExecuted {
   order_3_8: Boolean!
 }
 
-type TransparentUpgradeableProxy_MarketOrdersTimeoutUpdated {
+type Trading_MarketOrdersTimeoutUpdated {
   id: ID!
   value: BigInt!
 }
 
-type TransparentUpgradeableProxy_MaxAllowedCollateralUpdated {
+type Trading_MaxAllowedCollateralUpdated {
   id: ID!
   value: BigInt!
 }
 
-type TransparentUpgradeableProxy_OpenLimitCanceled {
+type Trading_OpenLimitCanceled {
   id: ID!
   trader: String!
   pairIndex: BigInt!
   index: BigInt!
 }
 
-type TransparentUpgradeableProxy_OpenLimitPlaced {
+type Trading_OpenLimitPlaced {
   id: ID!
   trader: String!
   pairIndex: BigInt!
   index: BigInt!
 }
 
-type TransparentUpgradeableProxy_OpenLimitUpdated {
+type Trading_OpenLimitUpdated {
   id: ID!
   trader: String!
   pairIndex: BigInt!
@@ -139,12 +139,12 @@ type TransparentUpgradeableProxy_OpenLimitUpdated {
   newSl: BigInt!
 }
 
-type TransparentUpgradeableProxy_Paused {
+type Trading_Paused {
   id: ID!
   paused: Boolean!
 }
 
-type TransparentUpgradeableProxy_SlUpdated {
+type Trading_SlUpdated {
   id: ID!
   tradeId: BigInt!
   trader: String!
@@ -153,7 +153,7 @@ type TransparentUpgradeableProxy_SlUpdated {
   newSl: BigInt!
 }
 
-type TransparentUpgradeableProxy_TopUpCollateralExecuted {
+type Trading_TopUpCollateralExecuted {
   id: ID!
   tradeId: BigInt!
   trader: String!
@@ -162,7 +162,7 @@ type TransparentUpgradeableProxy_TopUpCollateralExecuted {
   newLeverage: BigInt!
 }
 
-type TransparentUpgradeableProxy_TpUpdated {
+type Trading_TpUpdated {
   id: ID!
   tradeId: BigInt!
   trader: String!
@@ -171,13 +171,39 @@ type TransparentUpgradeableProxy_TpUpdated {
   newTp: BigInt!
 }
 
-type TransparentUpgradeableProxy_TriggerTimeoutUpdated {
+type Trading_TriggerTimeoutUpdated {
   id: ID!
   value: BigInt!
 }
 
-type TransparentUpgradeableProxy_Upgraded {
+type Trading_Upgraded {
   id: ID!
   implementation: String!
 }
 
+type Vault_RewardDistributed {
+  id: ID!
+  sender: String!
+  assets: BigInt!
+  accRewardsPerToken: BigInt!
+}
+
+type Vault_ShareToAssetsPriceUpdated {
+  id: ID!
+  value: BigInt!
+}
+
+
+type Vault_Transfer {
+  id: ID!
+  from: String!
+  to: String!
+  value: BigInt!
+}
+
+type Vault_AssetsSent {
+  id: ID!
+  sender: String!
+  receiver: String!
+  assets: BigInt!
+}
