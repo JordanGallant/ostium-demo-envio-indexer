@@ -1,33 +1,81 @@
-name: bakerFi
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: test
 networks:
+- id: 1
+  start_block: 0
+  contracts:
+  - name: EthFactory
+    address:
+    - 0x3AaC1CE01127593CA0c7f87b1Aedb1E153e152aE
+    handler: src/EventHandlers.ts
+    events:
+    - event: DestinationVaultRegistered(address vaultAddress, address caller)
+  - name: EthVault
+    address:
+    - 0x1E581AD9ef141C3037991806383B7990c1f68312
+    - 0x013D82483C968cdbB4a8384754f5a5028b85dB6d
+    - 0x84844d8A8a13337b31CF01DC384c74C862FCd903
+    - 0x003aD6a060a1082B7A6F85d24dDF9E9E196B8426
+    - 0x4F4bE87cFe874db2e248A787669a0D6E77f1F149
+    - 0x2899143298FECa3a36DAfDDcddAF167f1D673254
+    - 0x5593882d517886D190F47967168D2d68D8960F48
+    - 0x689dc7B5CE8e23061a8223E97701E9345764B8B7
+    - 0x3B2C87Ed95483059b950155a68E906d543193d5C
+    - 0x1416BfE53520a71553230c3FdeeEce30d5470bA7
+    - 0x676B34c2C2294eF070c1e9E0FCD4091Dd06393FE
+    - 0xB6d68122428Dc1141467cB96791618615Ab9F746
+    - 0x49895f72fd9d0BF6BBb485C70CE38556de62b070
+    - 0x903F21CBC0cFd49817dB219Cd216325fD4132034
+    - 0xE93f9C1f6436c7dCb3FE094E13E58742E16ae848
+    - 0x5Ff56531f92f1e3f2bE616760F05e35caE630D91
+    - 0xB84c580c005A5F633C8CF6eecAf5b0a8314EC5c4
+    - 0x84083bdcbF44960f0745dd0b794F426568D762b2
+    - 0xaD70ed6A904d38acD0BbE2D922279149cFEDb190
+    - 0x17216C32B9134343258B05807405db02BE030acd
+    - 0xf3ae3c74EaD129e770A864CeE291A805b170bBe0
+    - 0x865e59D439BF7310c9BC6117E6020B8C87De4065
+    - 0x25cb41919d6B88e0D48108A4F5fe8FBb3744aFE1
+    - 0x6DcB6797b1C0442587c2ad79745ef7BB487Fc2E2
+    - 0xe3AE2Ab9AE8ADe1B4940dd893C9339401bEe61A1
+    - 0xfB6f99FdF12E37Bfe3c4Cf81067faB10c465fb24
+    - 0x8cA2201BC34780f14Bca452913ecAc8e9928d4cA
+    - 0xC4c973eDC82CB6b972C555672B4e63713C177995
+    - 0x148Ca723BefeA7b021C399413b8b7426A4701500
+    - 0x90300b02b162F902B9629963830BcCCdeEd71113
+    - 0x4E12227b350E8f8fEEc41A58D36cE2fB2e2d4575
+    - 0x2F7e096a400ded5D02762120b39A3aA4ABA072a4
+    - 0x896eCc16Ab4AFfF6cE0765A5B924BaECd7Fa455a
+    - 0x1C6560857400A1C2CDb28B171d1Ee2B882f73E4D
+    - 0xC001f23397dB71B17602Ce7D90a983Edc38DB0d1
+    - 0x6a8C6ff78082a2ae494EB9291DdC7254117298Ff
+    handler: src/EventHandlers.ts
+    events:
+    - event: Transfer (address indexed from, address indexed to, uint256 value)
+    - event: WithdrawLiquidity (address lpToken, address staking, uint256 amount)
+    - event: BaseAssetWithdraw (uint256 amount, address owner, address to)
+    - event: UnderlyingWithdraw (uint256 amount, address owner, address to)
 - id: 8453
   start_block: 0
   contracts:
+  - name: BaseFactory
+    address:
+    - 0xBBBB6E844EEd5952B44C2063670093E27E21735f
+    handler: src/EventHandlers.ts
+    events:
+    - event: DestinationVaultRegistered(address vaultAddress, address caller)
   - name: BaseVault
     address:
-    - 0x37327c99bBc522e677a97d01021dB20227faF60A
+    - 0xa6EFB95B7393cB419B48A933273F49b6bb48dd5D
+    - 0xb3723E69D6e4553239d7dAf514bF8ff7998500E0
+    - 0x945a4f719018edBa445ca67bDa43663C815835Ad
+    - 0x58C2233399B85b53C5506f78eAaae9b0DBA1eD3E
+    - 0xA94031Ed4b316B043464FDd5482877F42A39845a
+    - 0xd18db4dD6aF6A7536aD7F863C136463681e0CdAD
+    - 0xBd137c56f3116E5c36753037a784FF844F84F59c
     handler: src/EventHandlers.ts
     events:
-    - event: AdminChanged(address previousAdmin, address newAdmin)
-    - event: BeaconUpgraded(address indexed beacon)
-    - event: Upgraded(address indexed implementation)
-    - event: Deposit (address indexed sender, address indexed owner, uint256 assets, uint256 shares)
     - event: Transfer (address indexed from, address indexed to, uint256 value)
-    - event: Withdraw ( address indexed sender, address indexed receiver,  address indexed owner, uint256 assets, uint256 shares)
-    - event: FeeReceiverChanged (address feeReceiver)
-- id: 42161
-  start_block: 0
-  contracts:
-  - name: ArbitrumVault
-    address:
-    - 0x4c6d58749126FEBb1D28E8B8FdE97DC3107996d3
-    handler: src/EventHandlers.ts
-    events:
-    - event: AdminChanged(address previousAdmin, address newAdmin)
-    - event: BeaconUpgraded(address indexed beacon)
-    - event: Upgraded(address indexed implementation)
-    - event: Deposit (address indexed sender, address indexed owner, uint256 assets, uint256 shares)
-    - event: Transfer (address indexed from, address indexed to, uint256 value)
-    - event: Withdraw ( address indexed sender, address indexed receiver,  address indexed owner, uint256 assets, uint256 shares)
-    - event: FeeReceiverChanged (address feeReceiver)
+    - event: WithdrawLiquidity (address lpToken, address staking, uint256 amount)
+    - event: BaseAssetWithdraw (uint256 amount, address owner, address to)
+    - event: UnderlyingWithdraw (uint256 amount, address owner, address to)
 raw_events: true

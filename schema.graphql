@@ -1,17 +1,42 @@
-type BaseVault_AdminChanged {
+type BaseFactory_DestinationVaultRegistered {
   id: ID!
-  previousAdmin: String!
-  newAdmin: String!
+  vaultAddress: String!
+  caller: String!
 }
 
-type BaseVault_BeaconUpgraded {
+type EthFactory_DestinationVaultRegistered {
   id: ID!
-  beacon: String!
+  vaultAddress: String!
+  caller: String!
 }
 
-type BaseVault_Upgraded {
+type EthVault_Transfer{
   id: ID!
-  implementation: String!
+  from: String!
+  to: String!
+  value: BigInt!
+}
+
+type EthVault_WithdrawLiquidity{
+  id: ID!
+  lpToken: String!
+  staking: String!
+  amount: BigInt!
+}
+
+type EthVault_BaseAssetWithdraw{
+  id: ID!
+  amount: BigInt!
+  owner: String!
+  to: String!
+
+}
+
+type EthVault_UnderlyingWithdraw{
+  id: ID!
+  amount: BigInt!
+  owner: String!
+  to: String!
 }
 
 type BaseVault_Transfer{
@@ -21,51 +46,24 @@ type BaseVault_Transfer{
   value: BigInt!
 }
 
-type BaseVault_Withdraw{
+type BaseVault_WithdrawLiquidity{
   id: ID!
-  sender: String!
-  reciever: String!
-  owner: String!
-  assets:BigInt!
-  shares: BigInt!
-}
-type BaseVault_Deposit{
-  id: ID!
-  sender: String!
-  owner: String!
-  assets:BigInt!
-  shares: BigInt!
+  lpToken: String!
+  staking: String!
+  amount: BigInt!
 }
 
-type BaseVault_FeeReceiverChanged{
+type BaseVault_BaseAssetWithdraw{
   id: ID!
-  feeReceiver: String!
-}
-
-type ArbitrumVault_Transfer{
-  id: ID!
-  from: String!
+  amount: BigInt!
+  owner: String!
   to: String!
-  value: BigInt!
+
 }
 
-type ArbitrumVault_Withdraw{
+type BaseVault_UnderlyingWithdraw{
   id: ID!
-  sender: String!
-  reciever: String!
+  amount: BigInt!
   owner: String!
-  assets:BigInt!
-  shares: BigInt!
-}
-type ArbitrumVault_Deposit{
-  id: ID!
-  sender: String!
-  owner: String!
-  assets:BigInt!
-  shares: BigInt!
-}
-
-type ArbitrumVault_FeeReceiverChanged{
-  id: ID!
-  feeReceiver: String!
+  to: String!
 }
